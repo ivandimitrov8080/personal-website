@@ -1,0 +1,45 @@
+{
+  "baseurl": "ivandimitrov.co.uk",
+  "title": "Ivan Dimitrov",
+  "languageCode": "en-us",
+  "theme": "hello-friend-ng",
+  "paginate": 10,
+  "params": {
+    "homeSubtitle": "Software Developer",
+    "social": [
+      {
+        "name": "linkedin",
+        "url": "https://www.linkedin.com/in/ivand1217/"
+      },
+      {
+        "name": "github",
+        "url": "https://github.com/ivandimitrov8080"
+      },
+      {
+        "name": "gitlab",
+        "url": "https://gitlab.com/ivandimitrov8080"
+      }
+    ]
+  },
+  "languages": {
+    "en": {
+      "title": "Ivan Dimitrov",
+      "subtitle": "Software Developer",
+      "params": {
+        "logo": {
+          "logoText": "hello world",
+          "logoHomeLink": "/"
+        }
+      },
+      "menu": {
+        "main": [
+          {
+            "identifier": "about",
+            "name": "About me",
+            "url": "/about"
+          }
+        ]
+      }
+    }
+  }
+}
