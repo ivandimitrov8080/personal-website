@@ -37,6 +37,11 @@
             "identifier": "about",
             "name": "About me",
             "url": "/about"
+          },
+          {
+            "identifier": "notes",
+            "name": "Notes",
+            "url": "/notes"
           }
         ]
       }
