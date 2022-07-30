@@ -22,7 +22,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: ./build.sh
+        run: hugo --minify && echo "ivandimitrov.co.uk" > public/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
