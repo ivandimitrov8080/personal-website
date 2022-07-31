@@ -1,6 +1,7 @@
 ---
 title: "Android"
 date: 2022-07-30T15:41:03Z
+tags: ['java', 'android', 'applications', 'notes']
 ---
 
 [Android](https://www.android.com/) is an [open source](https://source.android.com/setup/contribute/code-search) mobile operating system based on a modified version of the [Linux kernel](https://kernel.org/) created by [Google](https://www.google.com/). [This](https://source.android.com/devices/architecture/) is its architecture. We're interested in the `APPLICATION FRAMEWORK` component, because that's where all the JVM stuff happens. Notice that I said JVM and not Java, because [Kotlin](https://kotlinlang.org/) is also used in app development.
