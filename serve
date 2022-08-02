@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pidfile="./server.pid"
+
+[[ "$1" = "k" ]] && xargs kill <<< $( cat "$pidfile" ) && exit 0
+
+hugo serve > /dev/null 2>&1 &
+echo "$!" > "$pidfile"
+
