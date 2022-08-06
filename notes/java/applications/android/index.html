@@ -5,14 +5,21 @@ Android utilises the event-driven architecture to interact with the app user. Pr
 <span class=logo__text>hello world</span>
 <span class=logo__cursor></span></div></a><span class=header__right><nav class=menu><ul class=menu__inner><li><a href=/about>About me</a></li><li><a href=/notes>Notes</a></li></ul></nav><span class=menu-trigger><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span></span></span></header><div class=content><main class=post><div class=post-info></p></div><article><h2 class=post-title><a href=https://ivandimitrov.co.uk/notes/java/applications/android/>Android</a></h2><div class=post-content><p><a href=https://www.android.com/ target=_blank>Android</a>
 is an <a href=https://source.android.com/setup/contribute/code-search target=_blank>open source</a>
-mobile operating system based on a modified version of the <a href=https://kernel.org/ target=_blank>Linux kernel</a>
+mobile operating system based
+on a modified version of the <a href=https://kernel.org/ target=_blank>Linux kernel</a>
 created by <a href=https://www.google.com/ target=_blank>Google</a>
-. <a href=https://source.android.com/devices/architecture/ target=_blank>This</a>
-is its architecture. We&rsquo;re interested in the <code>APPLICATION FRAMEWORK</code> component, because that&rsquo;s where all the JVM stuff happens. Notice that I said JVM and not Java, because <a href=https://kotlinlang.org/ target=_blank>Kotlin</a>
+.
+<a href=https://source.android.com/devices/architecture/ target=_blank>This</a>
+is its architecture.
+We&rsquo;re interested in the <code>APPLICATION FRAMEWORK</code> component, because that&rsquo;s where all the JVM stuff happens.
+Notice that I said JVM and not Java, because <a href=https://kotlinlang.org/ target=_blank>Kotlin</a>
 is also used in app development.</p><p>Android utilises the <a href=https://www.redhat.com/en/topics/integration/what-is-event-driven-architecture target=_blank>event-driven architecture</a>
-to interact with the app user. Programmer-defined <code>EventListener</code>s listen for <a href=https://developer.android.com/guide/topics/ui/ui-events target=_blank>events</a>
-and when the appropriate event is fired then all listeners listening for that event execute their business logic.</p><p>For example, a <a href=https://developer.android.com/reference/android/view/View target=_blank>View</a>
-could have an <code>OnClickEventListener</code> registered to it, and when that view is clicked, an event is fired and the appropriate listener executes whatever is in the <code>onClick</code> function.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// Create an anonymous implementation of OnClickListener
+to interact with the app user.
+Programmer-defined <code>EventListener</code>s listen for <a href=https://developer.android.com/guide/topics/ui/ui-events target=_blank>events</a>
+and when the appropriate event is fired
+then all listeners listening for that event execute their business logic.</p><p>For example, a <a href=https://developer.android.com/reference/android/view/View target=_blank>View</a>
+could have an <code>OnClickEventListener</code> registered to it,
+and when that view is clicked, an event is fired and the appropriate listener executes whatever is in the <code>onClick</code> function.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=display:flex><span><span style=color:#75715e>// Create an anonymous implementation of OnClickListener
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>private</span> OnClickListener corkyListener <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> OnClickListener<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>onClick</span><span style=color:#f92672>(</span>View v<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
 </span></span><span style=display:flex><span>      <span style=color:#75715e>// do something when the button is clicked
@@ -27,7 +34,8 @@ could have an <code>OnClickEventListener</code> registered to it, and when that 
 </span></span></span><span style=display:flex><span><span style=color:#75715e></span>    button<span style=color:#f92672>.</span><span style=color:#a6e22e>setOnClickListener</span><span style=color:#f92672>(</span>corkyListener<span style=color:#f92672>);</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>...</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
-</span></span></code></pre></div><p>This is just scratching the surface, so if the reader wants to learn more, I&rsquo;d recommend <a href=https://www.udacity.com/course/new-android-fundamentals--ud851 target=_blank>the udacity course</a>
+</span></span></code></pre></div><p>This is just scratching the surface, so if the reader wants to learn more, I&rsquo;d recommend
+<a href=https://www.udacity.com/course/new-android-fundamentals--ud851 target=_blank>the udacity course</a>
 that got me started developing Java. I am not sponsored or anything, I just like the free material.</p></div></article><hr><div class=post-info><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://ivandimitrov.co.uk/tags/java/>java</a></span>
 <span class=tag><a href=https://ivandimitrov.co.uk/tags/android/>android</a></span>
 <span class=tag><a href=https://ivandimitrov.co.uk/tags/applications/>applications</a></span>
