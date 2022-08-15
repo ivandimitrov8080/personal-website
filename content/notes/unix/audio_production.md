@@ -7,12 +7,19 @@ tags: ['notes', 'unix', 'linux', 'audio']
 This is how you can configure Artix Linux for audio production.
 The steps should work for any Arch-based linux distro.
 
-# tldr;
+# tl;dr
 
 Run `yay -S linux-rt jack2 qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins`.
 This will take hours to finish, because of `linux-rt`.
+You can optionally remove it, everything will work fine without a RT kernel.
 
-Create the files with the content inside code blocks below, and regenerate `grub.cfg`.
+Run `sudo usermod -aG audio,realtime $USER`.
+
+Create the files with the content inside code blocks below.
+
+Regenerate `grub.cfg` if you've installed the RT kernel.
+
+Reboot.
 
 Make sure you run the configured pulseaudio and jackd when you want sound.
 
@@ -20,7 +27,11 @@ If you have a MIDI device, run `a2jmidid -e` to add it as an input device.
 
 ---
 
-# Install the [realtime kernel](https://gitlab.archlinux.org/dvzrv/linux-rt)
+# Install the [realtime kernel](https://gitlab.archlinux.org/dvzrv/linux-rt): OPTIONAL
+
+This is optional. It decreases latency from around 100ms to around 10-20ms,
+or less depending on hardware,
+so if that's what you want...
 
 [Reference](https://sookocheff.com/post/linux/how-to-install-the-real-time-kernel-in-ubuntu/)
 
@@ -36,6 +47,12 @@ but you can probably use any other AUR helper.
 After that, install the realtime kernel by running `yay -S linux-rt`.
 This will take some time to compile.
 [Here&apos;s a rough estimate of how long it&apos;ll take](https://ubuntuforums.org/showthread.php?t=650461).
+
+After it's done, add yourself to the realtime group.
+
+`sudo groupadd realtime`
+
+`sudo usermod -aG realtime $USER`
 
 #### Configure GRUB
 
@@ -112,6 +129,22 @@ exit-idle-time = -1
 ```
 
 PA should now be routing to jack2.
+
+#### [Enable realtime scheduling](https://jackaudio.org/faq/linux_rt_config.html)
+
+Add yourself to the `audio` group.
+
+`sudo groupadd audio`
+
+`sudo usermod -aG audio $USER`
+
+Create/edit `/etc/security/limits.d/audio.conf` and make sure it has the following
+2 lines
+
+```txt
+@audio   -  rtprio     95
+@audio   -  memlock    unlimited
+```
 
 For additional configuration, install `qjackctl` `yay -S qjackctl`.
 
