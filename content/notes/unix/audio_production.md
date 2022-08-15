@@ -44,6 +44,15 @@ Installation instructions can be found on github.
 I will be using `yay` in  this article,
 but you can probably use any other AUR helper.
 
+You'll want to increase the number of threads used for compiling the kernel.
+For that, edit `/etc/makepkg.conf` and change the `MAKEFLAGS` line.
+I set mine to j8, but you can change it to whatever you feel appropriate.
+This depends on your CPU power.
+
+```txt
+MAKEFLAGS="-j8"
+```
+
 After that, install the realtime kernel by running `yay -S linux-rt`.
 This will take some time to compile.
 [Here&apos;s a rough estimate of how long it&apos;ll take](https://ubuntuforums.org/showthread.php?t=650461).
