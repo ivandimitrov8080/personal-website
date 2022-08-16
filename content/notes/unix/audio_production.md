@@ -9,15 +9,11 @@ The steps should work for any Arch-based linux distro.
 
 # tl;dr
 
-Run `yay -S linux-rt jack2 qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins`.
-This will take hours to finish, because of `linux-rt`.
-You can optionally remove it, everything will work fine without a RT kernel.
+Run `paru -S jack2 qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins`.
 
-Run `sudo usermod -aG audio,realtime $USER`.
+Run `sudo usermod -aG audio $USER`.
 
 Create the files with the content inside code blocks below.
-
-Regenerate `grub.cfg` if you've installed the RT kernel.
 
 Reboot.
 
@@ -27,57 +23,11 @@ If you have a MIDI device, run `a2jmidid -e` to add it as an input device.
 
 ---
 
-# Install the [realtime kernel](https://gitlab.archlinux.org/dvzrv/linux-rt): OPTIONAL
+# What you'll need
 
-This is optional. It decreases latency from around 100ms to around 10-20ms,
-or less depending on hardware,
-so if that's what you want...
-
-[Reference](https://sookocheff.com/post/linux/how-to-install-the-real-time-kernel-in-ubuntu/)
-
-For you to have the best performance and no lag when dealing with audio production
-on Linux, you need to install the realtime kernel.
-
-The first step is to install an AUR helper like
-[yay](https://github.com/Jguer/yay).
-Installation instructions can be found on github.
-I will be using `yay` in  this article,
-but you can probably use any other AUR helper.
-
-You'll want to increase the number of threads used for compiling the kernel.
-For that, edit `/etc/makepkg.conf` and change the `MAKEFLAGS` line.
-I set mine to j8, but you can change it to whatever you feel appropriate.
-This depends on your CPU power.
-
-```txt
-MAKEFLAGS="-j8"
-```
-
-After that, install the realtime kernel by running `yay -S linux-rt`.
-This will take some time to compile.
-[Here&apos;s a rough estimate of how long it&apos;ll take](https://ubuntuforums.org/showthread.php?t=650461).
-
-After it's done, add yourself to the realtime group.
-
-`sudo groupadd realtime`
-
-`sudo usermod -aG realtime $USER`
-
-#### Configure GRUB
-
-[Reference](https://itsfoss.com/switch-kernels-arch-linux/)
-
-For you to be able to easily switch between kernels, you need to configure GRUB,
-unless you're using some other bootloader.
-
-Add the following lines to `/etc/default/grub` and regenerate the config
-by running `sudo grub-mkconfig -o /boot/grub/grub.cfg`.
-
-```txt
-GRUB_DISABLE_SUBMENU=y
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-```
+- An Arch-based linux distro
+- An AUR helper like `yay` or `paru`
+- About 1 hour
 
 ---
 
@@ -85,7 +35,7 @@ GRUB_SAVEDEFAULT=true
 
 [Reference](https://jackaudio.org/faq/pulseaudio_and_jack.html)
 
-Run `yay -S jack2`. This will install the server,
+Run `paru -S jack2`. This will install the server,
 after which you'll want some configuration.
 
 While pulseaudio is running, jack2 cannot access the same soundcard that PA is using.
@@ -155,7 +105,7 @@ Create/edit `/etc/security/limits.d/audio.conf` and make sure it has the followi
 @audio   -  memlock    unlimited
 ```
 
-For additional configuration, install `qjackctl` `yay -S qjackctl`.
+For additional configuration, install `qjackctl` `paru -S qjackctl`.
 
 You can control jack2 from the command line as well.
 qjackctl creates the file `$HOME/.jackdrc`, which you can use to launch jackd.
@@ -191,18 +141,18 @@ killAll() {
 
 ---
 
-# DAWs, utilities and other stuff.
+# DAWs and utilities.
 
 You're gonna need a
 [Digital Audio Workstation](https://en.wikipedia.org/wiki/Digital_audio_workstation)
 to produce audio on any
 operating system. For this task, I chose [ardour](https://ardour.org/).
-To install, run `yay -S ardour`.
+To install, run `paru -S ardour`.
 
 I use this mainly to listen to my MIDI keyboard while playing.
 For `ardour` to detect the MIDI keyboard,
 [a2jmidid](https://github.com/jackaudio/a2jmidid)
-is required. Install it by running `yay -S a2jmidid`.
+is required. Install it by running `paru -S a2jmidid`.
 After it's installed, run it from the terminal `a2jmidid -e`.
 The `-e` flag bridges hardware ports as well as software ports.
 This will show the keyboard as an input device in ardour.
@@ -211,11 +161,23 @@ This will show the keyboard as an input device in ardour.
 I found on ardour that helped me configure things.
 
 There's a few package groups on the AUR that hold some utilities
-and plugins. To install them, run `yay -S pro-audio lv2-plugins`.
+and plugins. To install them, run `paru -S pro-audio lv2-plugins`.
 
 I've also got an electric guitar, for which I've installed
 [guitarix](https://guitarix.org/) for special effects and such.
 If you've configured jack correctly, this should just connect and work.
 Make sure your audio interface is jack's input device and your speakers
 or headphones are the output device.
+
+# Realtime Kernel
+
+You can also compile the `linux-rt` kernel found on the
+[AUR](https://aur.archlinux.org/packages/linux-rt).
+It improves latency a bit, but I don't find it necessary.
+
+If you decide to go down that route, know that you're
+going to need to configure an `nvidia-rt` driver
+if you have an Nvidia graphics card. That can be a huge pain.
+I configured `nouveau` to test the latency improvements,
+and found that it's just not worth it for what I do.
 
