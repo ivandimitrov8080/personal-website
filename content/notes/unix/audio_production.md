@@ -9,7 +9,7 @@ The steps should work for any Arch-based linux distro.
 
 # tl;dr
 
-Run `paru -S jack2 qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins`.
+Run `paru -S jack2 pulseaudio pulseaudio-jack qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins`.
 
 Run `sudo usermod -aG audio $USER`.
 
@@ -35,7 +35,8 @@ If you have a MIDI device, run `a2jmidid -e` to add it as an input device.
 
 [Reference](https://jackaudio.org/faq/pulseaudio_and_jack.html)
 
-Run `paru -S jack2`. This will install the server,
+Run `paru -S jack2 pulseaudio pulseaudio-jack`. This will install the server
+along with pulseaudio support,
 after which you'll want some configuration.
 
 While pulseaudio is running, jack2 cannot access the same soundcard that PA is using.
