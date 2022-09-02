@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unix on Ivan Dimitrov</title><link>https://ivandimitrov.co.uk/notes/unix/</link><description>Recent content in Unix on Ivan Dimitrov</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 14 Aug 2022 19:20:46 +0000</lastBuildDate><atom:link href="https://ivandimitrov.co.uk/notes/unix/index.xml" rel="self" type="application/rss+xml"/><item><title>Audio production</title><link>https://ivandimitrov.co.uk/notes/unix/audio_production/</link><pubDate>Sun, 14 Aug 2022 19:49:15 +0000</pubDate><guid>https://ivandimitrov.co.uk/notes/unix/audio_production/</guid><description>This is how you can configure Artix Linux for audio production. The steps should work for any Arch-based linux distro.
-tl;dr Run paru -S jack2 qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins.
+tl;dr Run paru -S jack2 pulseaudio pulseaudio-jack qjackctl ardour guitarix a2jmidid pro-audio lv2-plugins.
 Run sudo usermod -aG audio $USER.
 Create the files with the content inside code blocks below.
 Reboot.

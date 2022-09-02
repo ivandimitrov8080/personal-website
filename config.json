@@ -5,6 +5,7 @@
   "theme": "hello-friend-ng",
   "paginate": 10,
   "params": {
+    "EnableThemeToggle": true,
     "homeSubtitle": "Software Developer",
     "social": [
       {
