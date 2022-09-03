@@ -6,6 +6,7 @@
   "paginate": 10,
   "params": {
     "EnableThemeToggle": true,
+    "customJS": [ "/js/remark42.js" ],
     "homeSubtitle": "Software Developer",
     "social": [
       {
